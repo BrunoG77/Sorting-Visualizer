@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
 /* useState is used to manage state in functional components, 
 useEffect is used to handle side effects, such as fetching data or setting up event listeners.*/
+import React, { useState, useEffect } from "react";
+
+/* Array bar*/
+import ArrayBar from "./Components/ArrayBar/ArrayBar";
 
 /* Style*/
 import "./SortingVisualizer.css";
@@ -28,8 +31,8 @@ const SortingVisualizer = () => {
   Finally, the setArray function is called to update the array state with the new array.*/
   const resetArray = () => {
     const newArray = [];
-    for (let i = 0; i < 20; i++) {
-      newArray.push(randomIntFromInterval(10, 1000));
+    for (let i = 0; i < 10; i++) {
+      newArray.push(randomIntFromInterval(10, 100));
     }
     setArray(newArray);
   };
@@ -48,11 +51,15 @@ const SortingVisualizer = () => {
   Inside each <div>, the value of the array element is displayed.*/
   return (
     <div className="main-container">
-      {array.map((value, idx) => (
-        <div className="array-bar" key={idx}>
-          {value}
-        </div>
-      ))}
+      <div className="text-container">
+        {array.map((value, idx) => (
+          <div className="array-bar" key={idx}>
+            {value}-
+          </div>
+        ))}
+      </div>
+      {/* --------------------- BARS : 74% Height --------------------- */}
+      <ArrayBar array={array} />
     </div>
   );
 };
