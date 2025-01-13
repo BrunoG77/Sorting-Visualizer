@@ -1,6 +1,6 @@
 /* useState is used to manage state in functional components, 
 useEffect is used to handle side effects, such as fetching data or setting up event listeners.*/
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 /* Array bar*/
 import ArrayBar from "./Components/ArrayBar/ArrayBar";
@@ -53,7 +53,7 @@ const SortingVisualizer = () => {
     <div className="main-container">
       <div className="text-container">
         {array.map((value, idx) => (
-          <div className="array-bar" key={idx}>
+          <div className="array-bar" key={idx} data-testid={`arrayBar`}>
             {value}-
           </div>
         ))}
