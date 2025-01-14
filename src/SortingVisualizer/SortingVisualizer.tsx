@@ -9,7 +9,7 @@ import ArrayBar from "./Components/ArrayBar/ArrayBar";
 import "./SortingVisualizer.css";
 
 /*This component is a function that returns JSX (a syntax extension for JavaScript). */
-const SortingVisualizer = () => {
+export const SortingVisualizerFunctions = () => {
   /* Use the useState hook to initialize a state variable named array. 
   The state is initialized as an empty array of numbers ([]).
   The useState hook returns an array with two elements: 
@@ -44,6 +44,14 @@ const SortingVisualizer = () => {
   useEffect(() => {
     resetArray();
   }, []);
+
+  return { resetArray, array };
+};
+
+// Function that serves as a presentation to code.
+// The functions are above
+const SortingVisualizer = () => {
+  const { array } = SortingVisualizerFunctions();
 
   /*This line returns the JSX that will be rendered by the component.
   The JSX uses the array.map method to iterate over the array state and create a list of <div> elements.
