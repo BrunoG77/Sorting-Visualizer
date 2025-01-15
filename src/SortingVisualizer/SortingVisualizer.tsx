@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 /* Array bar*/
 import ArrayBar from "./Components/ArrayBar/ArrayBar";
 
+/* Buttons Bar */
+import ButtonsBar from "./Components/ButtonsBar/ButtonsBar";
+
 /* Style*/
 import "./SortingVisualizer.css";
 
@@ -45,13 +48,19 @@ export const SortingVisualizerFunctions = () => {
     resetArray();
   }, []);
 
-  return { resetArray, array };
+  // Call the algorithms and get the array sorted via the algorithm
+  const bubbleSort = () => {};
+  const insertionSort = () => {};
+  const selectionSort = () => {};
+
+  return { resetArray, array, bubbleSort, insertionSort, selectionSort };
 };
 
 // Function that serves as a presentation to code.
 // The functions are above
 const SortingVisualizer = () => {
-  const { array } = SortingVisualizerFunctions();
+  const { resetArray, array, bubbleSort, insertionSort, selectionSort } =
+    SortingVisualizerFunctions();
 
   /*This line returns the JSX that will be rendered by the component.
   The JSX uses the array.map method to iterate over the array state and create a list of <div> elements.
@@ -66,7 +75,14 @@ const SortingVisualizer = () => {
           </div>
         ))}
       </div>
-      {/* --------------------- BARS : 74% Height --------------------- */}
+      {/* --------------------- BUTTONS --------------------- */}
+      <ButtonsBar
+        generateNewArray={resetArray}
+        bubbleSort={bubbleSort}
+        insertionSort={insertionSort}
+        selectionSort={selectionSort}
+      />
+      {/* --------------------- BARS --------------------- */}
       <ArrayBar array={array} />
     </div>
   );
