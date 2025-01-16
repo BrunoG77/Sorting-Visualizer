@@ -1,8 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { render } from "@testing-library/react";
-// import { render, fireEvent, within } from "@testing-library/react";
+// import { render, fireEvent, screen } from "@testing-library/react";
 //import user from "@testing-library/user-event";
-import { renderHook, act } from "@testing-library/react";
+import { render, renderHook, act } from "@testing-library/react";
 
 import SortingVisualizer from "./SortingVisualizer/SortingVisualizer.tsx";
 import { SortingVisualizerFunctions } from "./SortingVisualizer/SortingVisualizer.tsx";
@@ -39,5 +38,28 @@ describe("App - Component Test", () => {
 
     // Make sure that the arrays are different and the button works
     expect(oldArray).not.toEqual(newArray);
+  });
+});
+
+// Test Sliders
+describe("ArrayBarSlider tests", () => {
+  it("should update array bars when slider is changed", () => {
+    const { result } = renderHook(() => SortingVisualizerFunctions());
+
+    const oldArrayNumber = result.current.arrayNumber;
+
+    // Create a mock event object
+    const mockEvent = {
+      type: "change",
+      target: { value: 5 },
+    } as unknown as Event;
+
+    act(() => {
+      result.current.handleArrayBarSliderChange(mockEvent, 5);
+    });
+
+    const newArrayNumber = result.current.arrayNumber;
+
+    expect(oldArrayNumber).not.toEqual(newArrayNumber);
   });
 });
