@@ -26,9 +26,12 @@ describe("App - Component Test", () => {
     // Get the array when loading the page
     const oldArray = result.current.array;
 
+    // get the array number
+    const arrayNumber = result.current.arrayNumber;
+
     // Simulate a user pressing the generate new array button
     act(() => {
-      result.current.resetArray();
+      result.current.resetArray(arrayNumber);
     });
 
     // Get the new array after the button has been pressed
