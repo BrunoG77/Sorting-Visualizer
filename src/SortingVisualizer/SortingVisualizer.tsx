@@ -21,7 +21,7 @@ export const SortingVisualizerFunctions = () => {
 
   const handleArrayBarSliderChange = (event: Event, value: number) => {
     setNumberOfArrayBars(value as number);
-    console.log(`Array Number ${value}`);
+    console.log(`Array Number ${value}| Event: ${event}`);
   };
 
   const randomIntFromInterval = (min: number, max: number) => {
