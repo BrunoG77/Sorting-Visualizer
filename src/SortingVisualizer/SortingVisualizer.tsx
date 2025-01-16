@@ -14,14 +14,14 @@ import Slider from "./Components/Sliders/Sliders";
 /* Style*/
 import "./SortingVisualizer.css";
 
-const SortingVisualizer = () => {
+// Functions to test
+export const SortingVisualizerFunctions = () => {
   const [array, setArray] = useState<number[]>([]);
   const [arrayNumber, setNumberOfArrayBars] = useState(10);
 
   const handleArrayBarSliderChange = (event: Event, value: number) => {
     setNumberOfArrayBars(value as number);
     console.log(`Array Number ${value}`);
-    resetArray(value);
   };
 
   const randomIntFromInterval = (min: number, max: number) => {
@@ -45,6 +45,28 @@ const SortingVisualizer = () => {
   const bubbleSort = () => {};
   const insertionSort = () => {};
   const selectionSort = () => {};
+
+  return {
+    resetArray,
+    array,
+    bubbleSort,
+    insertionSort,
+    selectionSort,
+    arrayNumber,
+    handleArrayBarSliderChange,
+  };
+};
+
+const SortingVisualizer = () => {
+  const {
+    resetArray,
+    array,
+    bubbleSort,
+    insertionSort,
+    selectionSort,
+    arrayNumber,
+    handleArrayBarSliderChange,
+  } = SortingVisualizerFunctions();
 
   return (
     <div className="main-container">
