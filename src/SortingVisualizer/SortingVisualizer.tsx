@@ -1,6 +1,6 @@
 /* useState is used to manage state in functional components, 
 useEffect is used to handle side effects, such as fetching data or setting up event listeners.*/
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 /* Array bar*/
 import ArrayBar from "./Components/ArrayBar/ArrayBar";
@@ -37,19 +37,19 @@ export const SortingVisualizerFunctions = () => {
     return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  const resetArray = (newArrayNumber: number) => {
+  const resetArray = useCallback((newArrayNumber: number) => {
     const newArray = [];
     console.log(`Array Number to make array ${newArrayNumber}`);
     for (let i = 0; i < newArrayNumber; i++) {
       newArray.push(randomIntFromInterval(10, 100));
     }
     setArray(newArray);
-  };
+  }, []);
 
   /*This line uses the useEffect hook to run the resetArray function once when the component mounts.*/
   useEffect(() => {
     resetArray(arrayNumber);
-  }, [arrayNumber]);
+  }, [arrayNumber, resetArray]);
 
   const bubbleSort = () => {};
   const insertionSort = () => {};
