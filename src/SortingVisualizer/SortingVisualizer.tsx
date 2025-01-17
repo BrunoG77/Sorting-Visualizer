@@ -18,10 +18,16 @@ import "./SortingVisualizer.css";
 export const SortingVisualizerFunctions = () => {
   const [array, setArray] = useState<number[]>([]);
   const [arrayNumber, setNumberOfArrayBars] = useState(10);
+  const [animationSpeed, setAnimationSpeed] = useState(50);
 
   const handleArrayBarSliderChange = (event: Event, value: number) => {
     setNumberOfArrayBars(value as number);
     console.log(`Array Number ${value}| Event: ${event}`);
+  };
+
+  const handleAnimationSpeedSliderChange = (value: number) => {
+    setAnimationSpeed(value as number);
+    console.log(`Speed Number ${value}`);
   };
 
   const randomIntFromInterval = (min: number, max: number) => {
@@ -54,6 +60,8 @@ export const SortingVisualizerFunctions = () => {
     selectionSort,
     arrayNumber,
     handleArrayBarSliderChange,
+    animationSpeed,
+    handleAnimationSpeedSliderChange,
   };
 };
 
@@ -66,6 +74,8 @@ const SortingVisualizer = () => {
     selectionSort,
     arrayNumber,
     handleArrayBarSliderChange,
+    animationSpeed,
+    handleAnimationSpeedSliderChange,
   } = SortingVisualizerFunctions();
 
   return (
@@ -91,6 +101,8 @@ const SortingVisualizer = () => {
       <Slider
         arrayNumber={arrayNumber}
         onChangeArrayBarSlider={handleArrayBarSliderChange}
+        animationSpeed={animationSpeed}
+        onChangeAnimationSpeedSlider={handleAnimationSpeedSliderChange}
       />
     </div>
   );

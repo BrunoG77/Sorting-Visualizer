@@ -62,4 +62,18 @@ describe("ArrayBarSlider tests", () => {
 
     expect(oldArrayNumber).not.toEqual(newArrayNumber);
   });
+
+  it("should update animation speed when slider is changed", () => {
+    const { result } = renderHook(() => SortingVisualizerFunctions());
+
+    const oldSpeedNumber = result.current.animationSpeed;
+
+    act(() => {
+      result.current.handleAnimationSpeedSliderChange(15);
+    });
+
+    const newSpeedNumber = result.current.animationSpeed;
+
+    expect(oldSpeedNumber).not.toEqual(newSpeedNumber);
+  });
 });
