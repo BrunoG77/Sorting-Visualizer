@@ -11,6 +11,9 @@ import ButtonsBar from "./Components/ButtonsBar/ButtonsBar";
 /* Sliders */
 import Slider from "./Components/Sliders/Sliders";
 
+/* Header */
+import Header from "./Components/Header/Header";
+
 /* Style*/
 import "./SortingVisualizer.css";
 
@@ -87,6 +90,8 @@ const SortingVisualizer = () => {
           </div>
         ))}
       </div>
+      {/* --------------------- HEADER --------------------- */}
+      <Header />
       {/* --------------------- BUTTONS --------------------- */}
       <ButtonsBar
         generateNewArray={() => resetArray(arrayNumber)}
