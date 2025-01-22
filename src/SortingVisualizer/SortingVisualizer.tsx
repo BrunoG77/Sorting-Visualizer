@@ -22,6 +22,7 @@ import { randomIntFromInterval } from "./HelperFuncs";
 
 /* Sorting Algorithms */
 import BubbleSort from "./SortingAlgorithms/BubbleSort/BubbleSort";
+import InsertionSort from "./SortingAlgorithms/InsertionSort/InsertionSort";
 
 // Functions to test
 export const SortingVisualizerFunctions = () => {
@@ -56,7 +57,9 @@ export const SortingVisualizerFunctions = () => {
   const bubbleSort = () => {
     BubbleSort(array, animationSpeed);
   };
-  const insertionSort = () => {};
+  const insertionSort = () => {
+    InsertionSort(array, animationSpeed);
+  };
   const selectionSort = () => {};
 
   return {

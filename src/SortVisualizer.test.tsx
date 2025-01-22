@@ -82,9 +82,7 @@ describe("ArrayBarSlider tests", () => {
 // Test Sorting Algorithms
 describe("Sorting algorithms tests", () => {
   // Mock the disableButtons function
-  vi.spyOn(HelperFuncs, "disableButtons").mockImplementation(() => {
-    // Do nothing or add any mock implementation if needed
-  });
+  vi.spyOn(HelperFuncs, "disableButtons").mockImplementation(() => {});
 
   it("should sort the array with bubble sort", () => {
     const { result } = renderHook(() => SortingVisualizerFunctions());
@@ -96,7 +94,7 @@ describe("Sorting algorithms tests", () => {
     const correctlySortedArray = [...notSortedArray].sort((a, b) => a - b);
 
     // Perform bubble sort
-    act(async () => {
+    act(() => {
       result.current.bubbleSort();
     });
 
@@ -110,6 +108,34 @@ describe("Sorting algorithms tests", () => {
     for (let i = 1; i < bubbleSortedArray.length; i++) {
       expect(bubbleSortedArray[i]).toBeGreaterThanOrEqual(
         bubbleSortedArray[i - 1]
+      );
+    }
+  });
+
+  it("should sort the array with Insertion sort", () => {
+    const { result } = renderHook(() => SortingVisualizerFunctions());
+
+    const notSortedArray = [...result.current.array];
+
+    // sort the initial array correctly to then compare if the sorting algorithm sorted correctly as well
+    // ([...array]) is a spread operator to create a copy of the array to not modify the original array
+    const correctlySortedArray = [...notSortedArray].sort((a, b) => a - b);
+
+    // Perform insertion sort
+    act(() => {
+      result.current.insertionSort();
+    });
+
+    const insertionSortedArray = result.current.array;
+
+    expect(insertionSortedArray).toEqual(correctlySortedArray);
+    expect(insertionSortedArray).not.toEqual(notSortedArray);
+    expect(HelperFuncs.disableButtons).toHaveBeenCalled();
+
+    // Additional check: ensure the array is actually sorted
+    for (let i = 1; i < insertionSortedArray.length; i++) {
+      expect(insertionSortedArray[i]).toBeGreaterThanOrEqual(
+        insertionSortedArray[i - 1]
       );
     }
   });

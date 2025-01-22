@@ -1,10 +1,20 @@
 import CompletedEffect from "./Sounds/Completed.mp3";
 
-const right_color_bar = document.getElementsByClassName("right-color-bar") as HTMLCollectionOf<HTMLElement>;
-const left_color_bar = document.getElementsByClassName("left-color-bar") as HTMLCollectionOf<HTMLElement>;
-const front_color_bar = document.getElementsByClassName("front-color-bar") as HTMLCollectionOf<HTMLElement>;
-const back_color_bar = document.getElementsByClassName("back-color-bar") as HTMLCollectionOf<HTMLElement>;
-const bottom_color_bar = document.getElementsByClassName("bottom") as HTMLCollectionOf<HTMLElement>;
+const right_color_bar = document.getElementsByClassName(
+  "right-color-bar"
+) as HTMLCollectionOf<HTMLElement>;
+const left_color_bar = document.getElementsByClassName(
+  "left-color-bar"
+) as HTMLCollectionOf<HTMLElement>;
+const front_color_bar = document.getElementsByClassName(
+  "front-color-bar"
+) as HTMLCollectionOf<HTMLElement>;
+const back_color_bar = document.getElementsByClassName(
+  "back-color-bar"
+) as HTMLCollectionOf<HTMLElement>;
+const bottom_color_bar = document.getElementsByClassName(
+  "bottom"
+) as HTMLCollectionOf<HTMLElement>;
 
 export function getBarStyle(index: number): CSSStyleDeclaration[] {
   const barStyle: CSSStyleDeclaration[] = [];
@@ -14,10 +24,10 @@ export function getBarStyle(index: number): CSSStyleDeclaration[] {
     left_color_bar[index],
     back_color_bar[index],
     front_color_bar[index],
-    bottom_color_bar[index]
+    bottom_color_bar[index],
   ];
 
-  elements.forEach(element => {
+  elements.forEach((element) => {
     if (element && element.style) {
       barStyle.push(element.style);
     }
@@ -49,12 +59,15 @@ export function swapBars(index1: number, index2: number): void {
     const h1 = parseInt(styleOfElement1[i].height, 10),
       h2 = parseInt(styleOfElement2[i].height, 10);
 
-    styleOfElement1[i].transform = `translateY(${60 - (h1 / 100) * 60}vh)`;
-    styleOfElement2[i].transform = `translateY(${60 - (h2 / 100) * 60}vh)`;
+    styleOfElement1[i].transform = `translateY(${60 - h1}vh)`;
+    styleOfElement2[i].transform = `translateY(${60 - h2}vh)`;
   }
 }
 
-export function resetBarStyleDefault(array: number[], animationSpeed: number): void {
+export function resetBarStyleDefault(
+  array: number[],
+  animationSpeed: number
+): void {
   setTimeout(() => {
     for (let i = 0; i < array.length; i++) {
       changeBackgroundColor(i, "rgba(0, 13, 255, 0.5)");
@@ -69,11 +82,17 @@ export function randomIntFromInterval(min: number, max: number): number {
 
 export function enableButtons(): void {
   (document.getElementById("reset") as HTMLButtonElement).disabled = false;
-  (document.getElementById("bubbleSortButton") as HTMLButtonElement).disabled = false;
-  (document.getElementById("selectionSortButton") as HTMLButtonElement).disabled = false;
-  (document.getElementById("insertionSortButton") as HTMLButtonElement).disabled = false;
+  (document.getElementById("bubbleSortButton") as HTMLButtonElement).disabled =
+    false;
+  (
+    document.getElementById("selectionSortButton") as HTMLButtonElement
+  ).disabled = false;
+  (
+    document.getElementById("insertionSortButton") as HTMLButtonElement
+  ).disabled = false;
   (document.getElementById("range-slider") as HTMLElement).style.opacity = "1";
-  (document.getElementById("range-slider") as HTMLElement).style.visibility = "visible";
+  (document.getElementById("range-slider") as HTMLElement).style.visibility =
+    "visible";
 }
 
 export function disableButtons(): void {
@@ -81,18 +100,21 @@ export function disableButtons(): void {
     "reset",
     "bubbleSortButton",
     "selectionSortButton",
-    "insertionSortButton"
+    "insertionSortButton",
   ];
 
-  buttons.forEach(buttonId => {
-    const button = document.getElementById(buttonId) as HTMLButtonElement | null;
+  buttons.forEach((buttonId) => {
+    const button = document.getElementById(
+      buttonId
+    ) as HTMLButtonElement | null;
     if (button) {
       button.disabled = true;
     }
   });
 
   (document.getElementById("range-slider") as HTMLElement).style.opacity = "0";
-  (document.getElementById("range-slider") as HTMLElement).style.visibility = "hidden";
+  (document.getElementById("range-slider") as HTMLElement).style.visibility =
+    "hidden";
 }
 
 export function playAudio(myAudio: string): void {

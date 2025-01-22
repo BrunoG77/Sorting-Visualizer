@@ -1,4 +1,4 @@
-import getBubbleSort from "./getBubbleSort.ts";
+import getInsertionSort from "./getInsertionSort.ts";
 import {
   changeBackgroundColor,
   changeBoxShadow,
@@ -13,23 +13,17 @@ interface Animation {
   comparingElement1: number;
   comparingElement2: number;
   doSwap: boolean;
-  isFinalElement: boolean;
-  finalElement: number;
+  sortedIndex: number;
 }
 
-const BubbleSort = (array: number[], animationSpeed: number): void => {
+const InsertionSort = (array: number[], animationSpeed: number): void => {
   disableButtons();
 
-  const animations: Animation[] = getBubbleSort(array);
+  const animations: Animation[] = getInsertionSort(array);
 
   for (let i = 0; i < animations.length; i++) {
-    const {
-      comparingElement1,
-      comparingElement2,
-      doSwap,
-      isFinalElement,
-      finalElement,
-    } = animations[i];
+    const { comparingElement1, comparingElement2, doSwap, sortedIndex } =
+      animations[i];
 
     const promise1 = new Promise<void>((resolve) => {
       setTimeout(() => {
@@ -47,17 +41,15 @@ const BubbleSort = (array: number[], animationSpeed: number): void => {
 
     const promise2 = new Promise<void>((resolve) => {
       setTimeout(() => {
-        if (isFinalElement) {
-          changeBackgroundColor(finalElement, "rgba(0, 164, 86, 0.6)");
-          changeBoxShadow(
-            finalElement,
-            "5px 5px 50px 5px  rgba(0, 164, 86, 0.2)"
-          );
-        } else {
-          changeBackgroundColor(comparingElement1, "rgba(0, 13, 255, 0.5)");
-          changeBoxShadow(comparingElement1, "rgba(0, 4, 255, 0.25)");
+        for (let j = 0; j <= sortedIndex; j++) {
+          changeBackgroundColor(j, "rgba(0, 164, 86, 0.6)");
+          changeBoxShadow(j, "5px 5px 50px 5px  rgba(0, 164, 86, 0.2)");
         }
-        if (finalElement === 0) resolve();
+        if (
+          comparingElement1 === array.length - 1 &&
+          comparingElement2 === array.length - 1
+        )
+          resolve();
       }, (i + 1) * animationSpeed);
     });
 
@@ -67,6 +59,7 @@ const BubbleSort = (array: number[], animationSpeed: number): void => {
   }
 
   resetBarStyleDefault(array, (animations.length + 1) * animationSpeed);
+  console.log(`Array From insertion main ${array}`);
 };
 
-export default BubbleSort;
+export default InsertionSort;
