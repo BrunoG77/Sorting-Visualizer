@@ -1,10 +1,11 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 // import { render, fireEvent, screen } from "@testing-library/react";
 //import user from "@testing-library/user-event";
 import { render, renderHook, act } from "@testing-library/react";
 
 import SortingVisualizer from "./SortingVisualizer/SortingVisualizer.tsx";
 import { SortingVisualizerFunctions } from "./SortingVisualizer/SortingVisualizer.tsx";
+import * as HelperFuncs from "./SortingVisualizer/HelperFuncs.ts";
 
 describe("App - Component Test", () => {
   it("should create an array", async () => {
@@ -75,5 +76,41 @@ describe("ArrayBarSlider tests", () => {
     const newSpeedNumber = result.current.animationSpeed;
 
     expect(oldSpeedNumber).not.toEqual(newSpeedNumber);
+  });
+});
+
+// Test Sorting Algorithms
+describe("Sorting algorithms tests", () => {
+  // Mock the disableButtons function
+  vi.spyOn(HelperFuncs, "disableButtons").mockImplementation(() => {
+    // Do nothing or add any mock implementation if needed
+  });
+
+  it("should sort the array with bubble sort", () => {
+    const { result } = renderHook(() => SortingVisualizerFunctions());
+
+    const notSortedArray = [...result.current.array];
+
+    // sort the initial array correctly to then compare if the sorting algorithm sorted correctly as well
+    // ([...array]) is a spread operator to create a copy of the array to not modify the original array
+    const correctlySortedArray = [...notSortedArray].sort((a, b) => a - b);
+
+    // Perform bubble sort
+    act(async () => {
+      result.current.bubbleSort();
+    });
+
+    const bubbleSortedArray = result.current.array;
+
+    expect(bubbleSortedArray).toEqual(correctlySortedArray);
+    expect(bubbleSortedArray).not.toEqual(notSortedArray);
+    expect(HelperFuncs.disableButtons).toHaveBeenCalled();
+
+    // Additional check: ensure the array is actually sorted
+    for (let i = 1; i < bubbleSortedArray.length; i++) {
+      expect(bubbleSortedArray[i]).toBeGreaterThanOrEqual(
+        bubbleSortedArray[i - 1]
+      );
+    }
   });
 });

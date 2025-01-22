@@ -17,6 +17,12 @@ import Header from "./Components/Header/Header";
 /* Style*/
 import "./SortingVisualizer.css";
 
+/* Helper functions */
+import { randomIntFromInterval } from "./HelperFuncs";
+
+/* Sorting Algorithms */
+import BubbleSort from "./SortingAlgorithms/BubbleSort/BubbleSort";
+
 // Functions to test
 export const SortingVisualizerFunctions = () => {
   const [array, setArray] = useState<number[]>([]);
@@ -33,10 +39,6 @@ export const SortingVisualizerFunctions = () => {
     console.log(`Speed Number ${value}`);
   };
 
-  const randomIntFromInterval = (min: number, max: number) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
-
   const resetArray = useCallback((newArrayNumber: number) => {
     const newArray = [];
     console.log(`Array Number to make array ${newArrayNumber}`);
@@ -51,7 +53,9 @@ export const SortingVisualizerFunctions = () => {
     resetArray(arrayNumber);
   }, [arrayNumber, resetArray]);
 
-  const bubbleSort = () => {};
+  const bubbleSort = () => {
+    BubbleSort(array, animationSpeed);
+  };
   const insertionSort = () => {};
   const selectionSort = () => {};
 
