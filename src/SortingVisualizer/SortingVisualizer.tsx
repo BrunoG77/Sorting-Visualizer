@@ -29,7 +29,7 @@ import SelectionSort from "./SortingAlgorithms/SelectionSort/SelectionSort";
 export const SortingVisualizerFunctions = () => {
   const [array, setArray] = useState<number[]>([]);
   const [arrayNumber, setNumberOfArrayBars] = useState(10);
-  const [animationSpeed, setAnimationSpeed] = useState(50);
+  const [animationSpeed, setAnimationSpeed] = useState(100);
 
   const handleArrayBarSliderChange = (event: Event, value: number) => {
     setNumberOfArrayBars(value as number);
