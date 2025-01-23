@@ -59,7 +59,6 @@ const InsertionSort = (array: number[], animationSpeed: number): void => {
   }
 
   resetBarStyleDefault(array, (animations.length + 1) * animationSpeed);
-  console.log(`Array From insertion main ${array}`);
 };
 
 export default InsertionSort;

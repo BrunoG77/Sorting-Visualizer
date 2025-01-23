@@ -18,12 +18,15 @@ import Header from "./Components/Header/Header";
 import "./SortingVisualizer.css";
 
 /* Helper functions */
-import { randomIntFromInterval } from "./HelperFuncs";
+import { randomIntFromInterval, playAudio } from "./HelperFuncs";
 
 /* Sorting Algorithms */
 import BubbleSort from "./SortingAlgorithms/BubbleSort/BubbleSort";
 import InsertionSort from "./SortingAlgorithms/InsertionSort/InsertionSort";
 import SelectionSort from "./SortingAlgorithms/SelectionSort/SelectionSort";
+
+/* Sounds */
+import Reset from "./Sounds/Reset.mp3";
 
 // Functions to test
 export const SortingVisualizerFunctions = () => {
@@ -33,20 +36,18 @@ export const SortingVisualizerFunctions = () => {
 
   const handleArrayBarSliderChange = (event: Event, value: number) => {
     setNumberOfArrayBars(value as number);
-    console.log(`Array Number ${value}| Event: ${event}`);
   };
 
   const handleAnimationSpeedSliderChange = (value: number) => {
     setAnimationSpeed(value as number);
-    console.log(`Speed Number ${value}`);
   };
 
   const resetArray = useCallback((newArrayNumber: number) => {
     const newArray = [];
-    console.log(`Array Number to make array ${newArrayNumber}`);
     for (let i = 0; i < newArrayNumber; i++) {
       newArray.push(randomIntFromInterval(10, 100));
     }
+    playAudio(Reset);
     setArray(newArray);
   }, []);
 

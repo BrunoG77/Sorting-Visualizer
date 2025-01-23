@@ -72,7 +72,6 @@ const SelectionSort = (array: number[], animationSpeed: number): void => {
   }
 
   resetBarStyleDefault(array, (animations.length + 1) * animationSpeed);
-  console.log(`Array From selection main ${array}`);
 };
 
 export default SelectionSort;

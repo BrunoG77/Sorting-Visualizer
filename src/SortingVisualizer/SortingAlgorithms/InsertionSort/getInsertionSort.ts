@@ -50,7 +50,6 @@ const getBubbleSort = (array: number[]): Animation[] => {
     doSwap: false,
     sortedIndex: array.length - 1,
   });
-  console.log(`Array Sorted From get insertion ${array}`);
   return animations;
 };
 

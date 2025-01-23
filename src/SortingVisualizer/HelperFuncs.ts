@@ -117,12 +117,15 @@ export function disableButtons(): void {
     "hidden";
 }
 
-export function playAudio(myAudio: string): void {
-  const audio = new Audio(myAudio);
+export const playAudio = (audioFile: string) => {
+  const audio = new Audio(audioFile);
   audio.preload = "auto";
-  const playing = audio.play();
-  playing.then(() => {}).catch(() => {});
-}
+  const playPromise = audio.play();
+
+  if (playPromise !== undefined) {
+    playPromise.then(() => {}).catch(() => {});
+  }
+};
 
 export function playCompletedSoundEffect(): void {
   playAudio(CompletedEffect);

@@ -7,6 +7,20 @@ import SortingVisualizer from "./SortingVisualizer/SortingVisualizer.tsx";
 import { SortingVisualizerFunctions } from "./SortingVisualizer/SortingVisualizer.tsx";
 import * as HelperFuncs from "./SortingVisualizer/HelperFuncs.ts";
 
+// Mock the HelperFuncs module
+vi.mock("./SortingVisualizer/HelperFuncs.ts", async () => {
+  const actual = await vi.importActual("./SortingVisualizer/HelperFuncs.ts");
+  return {
+    ...actual,
+    playAudio: vi.fn(),
+    disableButtons: vi.fn(),
+  };
+});
+
+beforeEach(() => {
+  vi.resetAllMocks();
+});
+
 describe("App - Component Test", () => {
   it("should create an array", async () => {
     const renderedApp = render(<SortingVisualizer />);
