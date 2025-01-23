@@ -34,7 +34,7 @@ export const SortingVisualizerFunctions = () => {
   const [arrayNumber, setNumberOfArrayBars] = useState(10);
   const [animationSpeed, setAnimationSpeed] = useState(100);
 
-  const handleArrayBarSliderChange = (event: Event, value: number) => {
+  const handleArrayBarSliderChange = (_event: Event, value: number) => {
     setNumberOfArrayBars(value as number);
   };
 
