@@ -31,7 +31,7 @@ const SpeedSlider: React.FC<ArrayBarSliderProps> = ({
       <Slider
         id="animationSpeedSlider"
         min={5}
-        max={250} // Adjust the max value as needed
+        max={500} // Adjust the max value as needed
         value={displayValue}
         valueLabelDisplay="auto"
         onChange={handleChange}

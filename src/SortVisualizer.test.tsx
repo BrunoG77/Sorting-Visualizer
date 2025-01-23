@@ -139,4 +139,32 @@ describe("Sorting algorithms tests", () => {
       );
     }
   });
+
+  it("should sort the array with Selection sort", () => {
+    const { result } = renderHook(() => SortingVisualizerFunctions());
+
+    const notSortedArray = [...result.current.array];
+
+    // sort the initial array correctly to then compare if the sorting algorithm sorted correctly as well
+    // ([...array]) is a spread operator to create a copy of the array to not modify the original array
+    const correctlySortedArray = [...notSortedArray].sort((a, b) => a - b);
+
+    // Perform insertion sort
+    act(() => {
+      result.current.selectionSort();
+    });
+
+    const selectionSortedArray = result.current.array;
+
+    expect(selectionSortedArray).toEqual(correctlySortedArray);
+    expect(selectionSortedArray).not.toEqual(notSortedArray);
+    expect(HelperFuncs.disableButtons).toHaveBeenCalled();
+
+    // Additional check: ensure the array is actually sorted
+    for (let i = 1; i < selectionSortedArray.length; i++) {
+      expect(selectionSortedArray[i]).toBeGreaterThanOrEqual(
+        selectionSortedArray[i - 1]
+      );
+    }
+  });
 });
