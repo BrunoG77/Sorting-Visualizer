@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage":"https://BrunoG77.github.io/sorting-visualizer",
+  "homepage":"https://brunog77.github.io/Sorting-Visualizer",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
