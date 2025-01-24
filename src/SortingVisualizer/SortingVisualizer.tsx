@@ -26,7 +26,7 @@ import InsertionSort from "./SortingAlgorithms/InsertionSort/InsertionSort";
 import SelectionSort from "./SortingAlgorithms/SelectionSort/SelectionSort";
 
 /* Sounds */
-import Reset from "./Sounds/Reset.mp3";
+import Reset from "./Sounds/Reset.wav";
 
 // Functions to test
 export const SortingVisualizerFunctions = () => {
