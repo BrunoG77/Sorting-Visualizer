@@ -101,7 +101,7 @@ const SortingVisualizer = () => {
           </div>
         ))}
       </div>
-      {/* --------------------- HEADER --------------------- */}
+      {/* --------------------- HEADER ---------------------- */}
       <Header />
       {/* --------------------- BUTTONS --------------------- */}
       <ButtonsBar
@@ -110,7 +110,7 @@ const SortingVisualizer = () => {
         insertionSort={insertionSort}
         selectionSort={selectionSort}
       />
-      {/* --------------------- BARS --------------------- */}
+      {/* --------------------- BARS ------------------------ */}
       <ArrayBar array={array} />
 
       {/* --------------------- SLIDERS --------------------- */}
