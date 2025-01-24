@@ -22,3 +22,7 @@
     #2d5d5d
   );
 }
+
+.text-container {
+  display: none;
+}
