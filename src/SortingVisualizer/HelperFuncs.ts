@@ -120,6 +120,7 @@ export function disableButtons(): void {
 export const playAudio = (audioFile: string) => {
   const audio = new Audio(audioFile);
   audio.preload = "auto";
+  audio.volume = 0.25;
   const playPromise = audio.play();
 
   if (playPromise !== undefined) {
