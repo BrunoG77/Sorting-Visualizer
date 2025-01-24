@@ -1,4 +1,4 @@
-import CompletedEffect from "./Sounds/Completed.mp3";
+import CompletedEffect from "./Sounds/Completed.wav";
 
 const right_color_bar = document.getElementsByClassName(
   "right-color-bar"
@@ -120,7 +120,7 @@ export function disableButtons(): void {
 export const playAudio = (audioFile: string) => {
   const audio = new Audio(audioFile);
   audio.preload = "auto";
-  audio.volume = 0.25;
+  audio.volume = 0.3;
   const playPromise = audio.play();
 
   if (playPromise !== undefined) {
