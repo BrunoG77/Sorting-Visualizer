@@ -56,6 +56,6 @@ These sliders enhance the application's flexibility, catering to users who wish 
 
 The Sorting Visualizer's intuitive design, comprising the header, buttons, array bars, and sliders, provides an effective platform for users to explore and understand sorting algorithms through interactive visualizations.
 
-You can try it here: https://brunog77.github.io/Sorting-Visualizer/
+[You can try it here!](https://brunog77.github.io/Sorting-Visualizer/)
 
 Have fun :)
