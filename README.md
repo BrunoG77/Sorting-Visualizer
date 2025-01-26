@@ -3,7 +3,11 @@
 ## Introduction
 
 The Sorting Visualizer is an interactive tool designed to help users understand and observe the behavior of various sorting algorithms through dynamic visual representations.
-Built using **React** with **TypeScript** and **vite**, this project showcases the visualization of classic sorting algorithms such as **Bubble Sort**, **Selection Sort**, and **Insertion Sort**. The application is structured into four primary components:
+Built using **React** with **TypeScript** and **vite**, this project showcases the visualization of classic sorting algorithms such as **Bubble Sort**, **Selection Sort**, and **Insertion Sort**.
+
+[You can try it here!](https://brunog77.github.io/Sorting-Visualizer/)
+
+The application is structured into four primary components:
 
 1. **Header**
 2. **Buttons**
@@ -55,7 +59,5 @@ These sliders enhance the application's flexibility, catering to users who wish 
 ## Conclusion
 
 The Sorting Visualizer's intuitive design, comprising the header, buttons, array bars, and sliders, provides an effective platform for users to explore and understand sorting algorithms through interactive visualizations.
-
-[You can try it here!](https://brunog77.github.io/Sorting-Visualizer/)
 
 Have fun :)
